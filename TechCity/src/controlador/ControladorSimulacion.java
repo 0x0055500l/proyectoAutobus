@@ -59,7 +59,7 @@ public class ControladorSimulacion implements Simulador.SimulacionListener {
     }
 
     private void actualizarBotones() {
-        boolean ejecutando = simulador.isEnEjecucion();
+        boolean ejecutando = simulador.isEnEjecucion(); // Verificar estado de la simulación
         vista.getBotonPausar().setEnabled(ejecutando);
         vista.getBotonReanudar().setEnabled(!ejecutando);
     }

@@ -37,15 +37,28 @@ TechCity/
 
 Desde la carpeta `TechCity/`:
 
+Creamos el bin con:
 ```bash
-javac -d bin src/**/*.java
-java -cp bin Main
+mkdir -p bin
 ```
 
-Si usas Windows PowerShell, podrías compilar con:
+y compilamos si usamos powershell:
+```bash
+javac -d bin (Get-ChildItem -Recurse -Filter *.java | ForEach-Object { $_.FullName })
+```
 
-```powershell
-Get-ChildItem -Recurse -Filter *.java | ForEach-Object { $_.FullName } | javac -d bin -classpath bin @-
+si usamos CMD sera:
+```bash
+for /R %f in (src*.java) do @echo %f>>sources.txt
+```
+
+si lo hacemos desde linux sera:
+```bash
+javac -d bin $(find src -name "*.java")
+```
+
+por ultimo ejecutamos el programa
+```bash
 java -cp bin Main
 ```
 

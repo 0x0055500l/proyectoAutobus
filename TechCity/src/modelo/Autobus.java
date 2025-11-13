@@ -11,7 +11,7 @@ public class Autobus {
     private final int id;
     private final int capacidadMaxima;
     private int pasajerosActuales;
-    private final List<Estacion> ruta;
+    private final List<Estacion> ruta; // lista de estaciones que conforman la ruta (circular)
     private int posicionActual; // índice en la ruta
     private int tiempoSiguienteEstacion; // ticks de espera (simulación de retraso)
 
@@ -55,11 +55,11 @@ public class Autobus {
      * @return cantidad recogida
      */
     public int recogerPasajeros() {
-        Estacion est = getEstacionActual();
-        int espacioDisponible = capacidadMaxima - pasajerosActuales;
-        if (espacioDisponible <= 0) return 0;
+        Estacion est = getEstacionActual();                             // estación actual donde recoger pasajeros
+        int espacioDisponible = capacidadMaxima - pasajerosActuales;    // espacio disponible en el autobús
+        if (espacioDisponible <= 0) return 0;                           // si no hay espacio, no recoge pasajeros
 
-        int tomados = est.retirarPasajeros(espacioDisponible);
+        int tomados = est.retirarPasajeros(espacioDisponible);          // pasajeros que se pueden tomar
         pasajerosActuales += tomados;
         return tomados;
     }
@@ -72,8 +72,8 @@ public class Autobus {
     public int dejarPasajeros() {
         if (pasajerosActuales <= 0) return 0;
         // Deja entre 0 y hasta el 30% de los pasajeros en promedio (al menos 0, a lo sumo todos).
-        int maxBajan = Math.max(1, (int)Math.ceil(pasajerosActuales * 0.3));
-        int bajan = Math.min(pasajerosActuales, random.nextInt(maxBajan + 1));
+        int maxBajan = Math.max(1, (int)Math.ceil(pasajerosActuales * 0.3));        // máximo que pueden bajar
+        int bajan = Math.min(pasajerosActuales, random.nextInt(maxBajan + 1));        // cantidad que baja
         pasajerosActuales -= bajan;
         // Nota: No se suman a la estación ya que se asume que llegaron a destino.
         return bajan;
