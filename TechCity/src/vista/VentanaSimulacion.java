@@ -4,9 +4,9 @@ import modelo.Autobus;
 import modelo.Estacion;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
-import java.util.*;
 
 /**
  * Ventana principal de simulación.
