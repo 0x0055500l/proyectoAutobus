@@ -149,11 +149,13 @@ TechCity/src/Main.java
 
 - Tu nuevo NetBeans debe quedar así:
 
+```
 NetBeansProjects/TechCity/src/
  ├── modelo/
  ├── vista/
  ├── controlador/
  └── Main.java
+```
 
 
 ## ➡️ Puedes copiar/pegar las carpetas manualmente desde el Explorador de Windows.
